@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Villa — Jaunts Everywhere Bali 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #6366b2; --purple-dark: #4a4d8f; --purple-light: #8b8dd4;
+    --orange: #f65e23; --orange-light: #ff8055;
+    --peach: #e3b89b; --peach-light: #f5dfd0;
+    --cream: #faf7f4; --dark: #1a1520;
+  }
+  body { background: var(--cream); font-family: 'Montserrat', sans-serif; color: var(--dark); max-width: 850px; margin: 0 auto; }
+ 
+  /* ── NAV BAR ── */
+  .topnav { background: var(--dark); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .topnav-brand { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: #fff; text-decoration: none; }
+  .topnav-brand span { color: var(--peach); }
+  .topnav-back { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--peach); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+  .topnav-back:hover { opacity: 0.7; }
+  .topnav-back::before { content: '←'; font-size: 13px; }
+ 
+  /* ── HERO ── */
+  .villa-hero { position: relative; width: 100%; min-height: 520px; overflow: hidden; background: var(--dark); }
+  .villa-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 70%, rgba(99,102,178,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(227,184,155,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 90%, rgba(246,94,35,0.25) 0%, transparent 45%),
+      linear-gradient(150deg, #0d0b18 0%, #1e1530 45%, #201408 100%);
+  }
+  .villa-hero-ring { position: absolute; inset: 0; pointer-events: none; }
+  .villa-hero-ring::before { content: ''; position: absolute; top: -60px; right: -60px; width: 380px; height: 380px; border-radius: 50%; border: 1px solid rgba(227,184,155,0.1); }
+  .villa-hero-ring::after { content: ''; position: absolute; bottom: -40px; left: -60px; width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(99,102,178,0.15); }
+  .villa-hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; background: linear-gradient(to top, rgba(10,8,18,0.95) 0%, transparent 100%); }
+  .villa-hero-content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 520px; padding: 56px 32px; text-align: center; }
+  .villa-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 0.38em; color: var(--peach); text-transform: uppercase; margin-bottom: 20px; opacity: 0.85; }
+  .villa-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(48px, 9vw, 76px); line-height: 0.9; color: #fff; letter-spacing: -0.01em; margin-bottom: 18px; }
+  .villa-title em { font-style: italic; color: var(--peach); }
+  .villa-subtitle { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(16px, 2.5vw, 22px); font-style: italic; color: rgba(255,255,255,0.6); margin-bottom: 36px; max-width: 520px; }
+  .villa-meta { display: flex; align-items: center; gap: 16px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; color: var(--peach); text-transform: uppercase; flex-wrap: wrap; justify-content: center; }
+  .villa-meta span { width: 24px; height: 1px; background: var(--peach); opacity: 0.4; display: block; }
+ 
+  /* ── BOOKING BUTTONS (hero) ── */
+  .villa-btns { display: flex; flex-direction: column; align-items: center; gap: 11px; width: 100%; max-width: 360px; margin-top: 36px; }
+  .btn { display: inline-block; text-align: center; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border-radius: 2px; transition: opacity 0.2s, transform 0.15s; cursor: pointer; width: 100%; padding: 14px 24px; }
+  .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+  .btn-reserve { background: linear-gradient(135deg, var(--orange), var(--orange-light)); color: #fff; }
+  .btn-deposit-250 { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(6px); }
+  .btn-deposit-500 { background: rgba(99,102,178,0.35); color: #fff; border: 1px solid rgba(99,102,178,0.55); backdrop-filter: blur(6px); }
+ 
+  /* ── DESCRIPTION SECTION ── */
+  .desc-section { padding: 64px 48px; }
+  .s-label { font-size: 9px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .s-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 38px); font-weight: 300; line-height: 1.1; color: var(--dark); margin-bottom: 24px; }
+  .s-title em { font-style: italic; color: var(--purple); }
+  .desc-body { font-size: 13px; line-height: 1.95; color: #555; max-width: 680px; margin-bottom: 36px; }
+  .desc-body p + p { margin-top: 16px; }
+ 
+  /* ── VILLA DETAILS PILLS ── */
+  .villa-details { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .detail-pill { display: flex; align-items: center; gap: 8px; background: white; border: 1px solid #e5e0da; border-radius: 4px; padding: 10px 16px; }
+  .detail-pill .dp-icon { font-size: 16px; }
+  .detail-pill .dp-label { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dark); margin-bottom: 1px; }
+  .detail-pill .dp-val { font-size: 11px; color: #777; }
+ 
+  /* ── GALLERY ── */
+  .gallery-section { padding: 0 48px 64px; }
+  .gallery-label { font-size: 9px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .gallery-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 36px); font-weight: 300; color: var(--dark); margin-bottom: 28px; }
+  .gallery-title em { font-style: italic; color: var(--purple); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .gallery-item { aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; background: var(--dark); position: relative; }
+  .gallery-item img {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
+  .gallery-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    background: linear-gradient(135deg, #1d1828 0%, #2a1f3c 50%, #1a1520 100%); border: 1px solid rgba(227,184,155,0.12); }
+  .gallery-placeholder .gp-icon { font-size: 28px; opacity: 0.5; }
+  .gallery-placeholder .gp-label { font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-align: center; padding: 0 12px; }
+  /* First image spans 2 columns */
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item.wide .gallery-placeholder { background: linear-gradient(135deg, #1a1520 0%, #2d1f38 40%, #241508 100%); }
+
+   /* ── OCCUPANCY SECTION ── */
+  .occ-section { padding: 0 48px 64px; }
+  .occ-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .occ-card { border-radius: 6px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .occ-head { padding: 16px 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+  .oh-purple { background: var(--purple); color: #fff; }
+  .oh-orange { background: var(--orange); color: #fff; }
+  .occ-body { padding: 20px; border: 1px solid #ede9e3; border-top: none; }
+  .occ-price { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: var(--dark); line-height: 1; margin-bottom: 4px; }
+  .occ-price-label { font-size: 10px; color: #999; margin-bottom: 14px; }
+  .occ-detail { font-size: 11px; color: #666; line-height: 1.65; }
+ 
+  /* ── BOTTOM BOOKING CTA ── */
+  .cta-section { padding: 56px 48px; background: var(--dark); text-align: center; }
+  .cta-label { font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--peach); margin-bottom: 14px; opacity: 0.8; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 38px); font-weight: 300; color: #fff; margin-bottom: 10px; }
+  .cta-title em { font-style: italic; color: var(--peach); }
+  .cta-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 36px; letter-spacing: 0.04em; }
+  .cta-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 360px; margin: 0 auto; }
+  .btn-back { background: transparent; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.15); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 13px 24px; border-radius: 2px; text-decoration: none; display: inline-block; text-align: center; width: 100%; transition: opacity 0.2s; }
+  .btn-back:hover { opacity: 0.7; }
+ 
+  /* ── FOOTER ── */
+  .site-footer { background: #120e1a; padding: 32px 48px; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(227,184,155,0.1); }
+  .sf-brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: #fff; }
+  .sf-brand span { color: var(--peach); }
+  .sf-tagline { font-size: 9px; letter-spacing: 0.16em; color: rgba(255,255,255,0.28); text-transform: uppercase; margin-top: 3px; }
+  .sf-right { text-align: right; }
+  .sf-right a { font-size: 11px; color: var(--peach); text-decoration: none; opacity: 0.7; }
+  .sf-right a:hover { opacity: 1; }
+ 
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .desc-section, .gallery-section, .occ-section, .cta-section { padding-left: 20px; padding-right: 20px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.wide { grid-column: span 2; }
+    .occ-grid { grid-template-columns: 1fr; }
+    .topnav { padding: 12px 20px; }
+    .villa-btns { max-width: 100%; }
+    .cta-btns { max-width: 100%; }
+    .site-footer { flex-direction: column; }
+    .sf-right { text-align: left; }
+    .villa-hero-content { padding: 48px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand">Jaunts <span>Everywhere</span></a>
+  <a href="index.html" class="topnav-back">Bali Overview</a>
+</nav>
+
+<!-- VILLA HERO -->
+<section class="villa-hero">
+  <div class="villa-hero-bg"></div>
+  <div class="villa-hero-ring"></div>
+  <div class="villa-hero-fade"></div>
+  <div class="villa-hero-content">
+    <p class="villa-eyebrow">Jaunts Everywhere · Bali 2027</p>
+    <h1 class="villa-title"><em>Your</em><br>Private Villa</h1>
+    <p class="villa-subtitle">Private bedrooms, each with a king bed and private en suite bathroom. One unforgettable home base. Seven nights in the heart of Seminyak.</p>
+    <div class="villa-meta">
+      <span></span>
+      Seminyak, Bali &nbsp;·&nbsp; July 15–22, 2027
+      <span></span>
+    </div>
+    <div class="villa-btns">
+      <a href="https://forms.gle/wKqW4jtmdRY9WKs39" target="_blank" rel="noopener noreferrer" class="btn btn-reserve">
+        ✦ &nbsp;Reserve My Spot
+      </a>
+      <a href="https://square.link/u/NCEJdtXR" target="_blank" rel="noopener noreferrer" class="btn btn-deposit-250">
+        Pay My $250 Deposit
+      </a>
+      <a href="https://square.link/u/7qGDeScg" target="_blank" rel="noopener noreferrer" class="btn btn-deposit-500">
+        Pay My $500 Deposit
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="desc-section">
+  <p class="s-label">The Villa Experience</p>
+  <h2 class="s-title">More than a place to sleep.<br><em>A sanctuary.</em></h2>
+  <div class="desc-body">
+    <p>Nestled in the vibrant coastal area of Seminyak, your private villa is the beating heart of the trip. This isn't a hotel — it's your home for seven nights, a space where mornings begin with a Balinese breakfast on the terrace and evenings end with the sounds of the jungle all around you.</p>
+    <p>Every bedroom is appointed with a <strong>king bed</strong> and a <strong>private en suite bathroom</strong> — no shared facilities, no compromises. Whether you're sharing a room with a travel companion or claiming your own private space, every guest wakes up to comfort and privacy.</p>
+    <p>The villa sleeps all 14 travelers comfortably, with beautifully appointed bedrooms available in double or single occupancy. Spend lazy afternoons by the pool, gather for floating breakfasts, or simply exhale in a space that feels worlds away from the everyday.</p>
+    <p>Every morning, a fresh Balinese breakfast awaits. Your dedicated private drivers depart from the villa each excursion day. Airport transfers — arriving and departing — are all handled. And your included 1-hour traditional Balinese massage? You can enjoy it right here.</p>
+  </div>
+
+  <div class="villa-details">
+    <div class="detail-pill"><span class="dp-icon">👑</span><div><div class="dp-label">Bed Type</div><div class="dp-val">King bed in every room</div></div></div>
+    <div class="detail-pill"><span class="dp-icon">🚿</span><div><div class="dp-label">Bathrooms</div><div class="dp-val">Private en suite in every room</div></div></div>
+    <div class="detail-pill"><span class="dp-icon">👥</span><div><div class="dp-label">Capacity</div><div class="dp-val">14 travelers</div></div></div>
+    <div class="detail-pill"><span class="dp-icon">📍</span><div><div class="dp-label">Location</div><div class="dp-val">Seminyak, Bali</div></div></div>
+    <div class="detail-pill"><span class="dp-icon">🗓️</span><div><div class="dp-label">Stay</div><div class="dp-val">July 15–22, 2027</div></div></div>
+    <div class="detail-pill"><span class="dp-icon">🍳</span><div><div class="dp-label">Breakfast</div><div class="dp-val">Included daily</div></div></div>
+    <div class="detail-pill"><span class="dp-icon">💆</span><div><div class="dp-label">Massage</div><div class="dp-val">1 hr per person</div></div></div>
+    <div class="detail-pill"><span class="dp-icon">🚗</span><div><div class="dp-label">Drivers</div><div class="dp-val">Included all excursion days</div></div></div>
+    <div class="detail-pill"><span class="dp-icon">✈️</span><div><div class="dp-label">Transfers</div><div class="dp-val">Airport pickup & drop-off</div></div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <p class="gallery-label">Photo Gallery</p>
+  <h2 class="gallery-title">A glimpse of <em>your paradise.</em></h2>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="images/villa-1.avif" alt="Villa exterior and pool area">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/villa-2.avif" alt="Villa exterior and pool area">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/villa-3.avif" alt="Villa outdoor dining area">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/villa-4.avif" alt="Villa living area and pool">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/villa-5.avif" alt="Villa king bedroom with patio">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/villa-6.avif" alt="Villa en suite bathroom">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/villa-7.avif" alt="Villa king bedroom with patio to pool area">
+    </div>
+  </div>
+</section>
+
+<!-- OCCUPANCY OPTIONS -->
+<section class="occ-section">
+  <p class="s-label">Room Options</p>
+  <h2 class="s-title">Choose your <em>occupancy.</em></h2>
+  <div class="occ-grid">
+    <div class="occ-card">
+      <div class="occ-head oh-purple">Double Occupancy</div>
+      <div class="occ-body">
+        <div class="occ-price">$1,850</div>
+        <div class="occ-price-label">per person · total package</div>
+        <div class="occ-detail">Share a beautifully appointed room with a travel companion, partner, or friend. Two per room.</div>
+      </div>
+    </div>
+    <div class="occ-card">
+      <div class="occ-head oh-orange">Single Occupancy</div>
+      <div class="occ-body">
+        <div class="occ-price">$2,450</div>
+        <div class="occ-price-label">per person · total package</div>
+        <div class="occ-detail">Your own private room — a $600 supplement for sole occupancy. Available first-come, first-served.</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- BOTTOM CTA -->
+<section class="cta-section">
+  <p class="cta-label">Ready to claim your spot?</p>
+  <h2 class="cta-title">Only 12 spots.<br><em>Don't wait.</em></h2>
+  <p class="cta-sub">Deposit due August 1, 2026 · Final payment May 1, 2027</p>
+  <div class="cta-btns">
+    <a href="GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener noreferrer" class="btn btn-reserve">
+      ✦ &nbsp;Reserve My Spot
+    </a>
+    <a href="SQUARE_250_DEPOSIT_LINK_HERE" target="_blank" rel="noopener noreferrer" class="btn btn-deposit-250">
+      Pay My $250 Deposit
+    </a>
+    <a href="SQUARE_500_DEPOSIT_LINK_HERE" target="_blank" rel="noopener noreferrer" class="btn btn-deposit-500">
+      Pay My $500 Deposit
+    </a>
+    <a href="index.html" class="btn-back">← Back to Bali Overview</a>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div>
+    <p class="sf-brand">Jaunts <span>Everywhere</span></p>
+    <p class="sf-tagline">Curated group travel experiences</p>
+  </div>
+  <div class="sf-right">
+    <a href="index.html">← Back to Bali 2027 Overview</a>
+  </div>
+</footer>
+ 
+</body>
+</html>
